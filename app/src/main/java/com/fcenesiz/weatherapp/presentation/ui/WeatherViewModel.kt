@@ -1,6 +1,8 @@
 package com.fcenesiz.weatherapp.presentation.ui
 
-import androidx.compose.runtime.*
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.fcenesiz.weatherapp.domain.location.LocationTracker
@@ -26,8 +28,7 @@ class WeatherViewModel @Inject constructor(
                 error = null
             )
             locationTracker.getCurrentLocation()?.let { location ->
-                when (val result =
-                    repository.getWeatherData(location.latitude, location.longitude)) {
+                when(val result = repository.getWeatherData(location.latitude, location.longitude)) {
                     is Resource.Success -> {
                         state = state.copy(
                             weatherInfo = result.data,

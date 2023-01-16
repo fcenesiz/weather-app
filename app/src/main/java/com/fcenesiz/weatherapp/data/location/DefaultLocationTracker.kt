@@ -6,13 +6,18 @@ import android.content.Context
 import android.content.pm.PackageManager
 import android.location.Location
 import android.location.LocationManager
+import android.os.Looper
 import androidx.core.content.ContextCompat
 import com.fcenesiz.weatherapp.domain.location.LocationTracker
 import com.google.android.gms.location.FusedLocationProviderClient
+import com.google.android.gms.location.Granularity
+import com.google.android.gms.location.LocationRequest
+import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.suspendCancellableCoroutine
 import javax.inject.Inject
 import kotlin.coroutines.resume
 
+@ExperimentalCoroutinesApi
 class DefaultLocationTracker @Inject constructor(
     private val locationClient: FusedLocationProviderClient,
     private val application: Application
@@ -39,8 +44,9 @@ class DefaultLocationTracker @Inject constructor(
         return suspendCancellableCoroutine { cont ->
             locationClient.lastLocation.apply {
                 if (isComplete) {
-                    if (isSuccessful)
+                    if (isSuccessful){
                         cont.resume(result)
+                    }
                     else {
                         cont.resume(null)
                     }
@@ -59,4 +65,6 @@ class DefaultLocationTracker @Inject constructor(
             }
         }
     }
+
+
 }

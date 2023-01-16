@@ -17,9 +17,9 @@ import javax.inject.Singleton
 @InstallIn(SingletonComponent::class)
 object AppModule {
 
-    @Singleton
     @Provides
-    fun provideWeatherApi() : WeatherApi{
+    @Singleton
+    fun provideWeatherApi(): WeatherApi {
         return Retrofit.Builder()
             .baseUrl("https://api.open-meteo.com/")
             .addConverterFactory(MoshiConverterFactory.create())
@@ -27,10 +27,9 @@ object AppModule {
             .create()
     }
 
-    @Singleton
     @Provides
-    fun provideFusedLocationProviderClient(app: Application): FusedLocationProviderClient{
+    @Singleton
+    fun provideFusedLocationProviderClient(app: Application): FusedLocationProviderClient {
         return LocationServices.getFusedLocationProviderClient(app)
     }
-
 }
