@@ -1,4 +1,4 @@
-package com.fcenesiz.weatherapp.presentation
+package com.fcenesiz.weatherapp.presentation.ui
 
 import com.fcenesiz.weatherapp.domain.weather.WeatherInfo
 

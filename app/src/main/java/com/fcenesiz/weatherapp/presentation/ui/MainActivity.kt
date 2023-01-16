@@ -1,4 +1,4 @@
-package com.fcenesiz.weatherapp.presentation
+package com.fcenesiz.weatherapp.presentation.ui
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity

@@ -1,4 +1,4 @@
-package com.fcenesiz.weatherapp.presentation
+package com.fcenesiz.weatherapp.presentation.ui
 
 import androidx.compose.runtime.*
 import androidx.lifecycle.ViewModel
